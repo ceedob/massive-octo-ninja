@@ -1,7 +1,7 @@
 import entity, pygame
 class platform (entity.entity):
 	def __init__(self):
-		self.height = 20
+		self.height = 50
 		
 	type = "PLATFORM"
 	def draw(self, window,scroll):
@@ -19,7 +19,7 @@ class platform (entity.entity):
 		
 class wall(entity.entity):
 	def __init__(self):
-		self.width=20
+		self.width=50
 		
 	type = "WALL"
 	def draw(self, window,scroll):
@@ -27,7 +27,7 @@ class wall(entity.entity):
 
 	def blocking(self, player):
 	   if player.side > 0 : #going right
-		if (self.x - (player.x + player.width/2) > -2 and self.x - (player.x + player.width/2) < 5):
+		if ((self.x - (player.x + player.width/2) > -player.side and self.x - (player.x + player.width/2) < player.side)):
 		 if (self.y - player.y) <= 0 and (self.y+self.height - (player.y+player.height/2)) >= 0:
 		  return self.impassable
 		 else:
@@ -35,7 +35,7 @@ class wall(entity.entity):
 		else:
 		 return False
 	   elif player.side < 0:
-	    if (self.x+self.width - (player.x - player.width/2) > -2 and self.x+self.width - (player.x - player.width/2) < 5):
+	    if (self.x+self.width - (player.x - player.width/2) > player.side and self.x+self.width - (player.x - player.width/2) < -player.side):
 		 if (self.y - player.y) <= 0 and (self.y+self.height - (player.y+player.height/2)) >= 0:
 		  return self.impassable
 		 else:

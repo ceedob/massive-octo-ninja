@@ -43,7 +43,7 @@ class entity (object):
 		pass
 		
 	def blocking(self, player):
-		if math.sqrt(((self.x+self.width/2)-(player.x))**2+((self.y+self.height/2)-(player.y))**2)<25:
+		if math.sqrt(((self.x+self.width/2)-(player.x))**2+((self.y+self.height/2)-(player.y))**2)<player.width:
 			return True
 		else:
 			return False

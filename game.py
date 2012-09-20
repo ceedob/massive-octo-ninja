@@ -13,24 +13,20 @@ player = Player.player()
 player.x=150
 player.window = window.get_height()
 
-entities = [environment.platform(),environment.platform(),environment.platform(),environment.wall(),entity.bonus(), environment.platform(), environment.wall(),environment.platform(),environment.platform(),environment.platform(),environment.platform()]
+entities = [environment.platform(),environment.platform(),environment.platform(),environment.wall(),entity.bonus(), environment.platform(), environment.wall(),environment.platform(),environment.platform(),environment.platform(),environment.platform(),environment.wall()]
 entities[0].x = 100
 entities[0].y = 300
 entities[0].width = 200
-entities[0].height = 20
 entities[1].x = 300
 entities[1].y = 500
 entities[1].width = 400
-entities[1].height = 20
 entities[2].x = 100
 entities[2].y = 700
-entities[2].width = 100
-entities[2].height = 20
+entities[2].width = 101
 entities[3].x = 250
 entities[3].y = 100
-entities[3].width = 20
 entities[3].height = 200
-entities[4].x = 950
+entities[4].x = 1950
 entities[4].y = 200
 entities[5].x = 900
 entities[5].y = 600
@@ -50,6 +46,9 @@ entities[9].width=600
 entities[10].x = 1950
 entities[10].y = 650
 entities[10].width = 800
+entities[11].x = 2600
+entities[11].y = 250
+entities[11].height = 300
 
 def input(events): 
    global player
@@ -105,7 +104,7 @@ while True:
 		scrolling+=0.1
 	
 	scroll += scrolling
-	
+	if scroll < 0: scroll = 0
 	player.draw(window,scroll)
 			
 	input(pygame.event.get())  

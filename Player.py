@@ -3,9 +3,9 @@ from pygame.locals import *
 from entity import *
 
 class player(entity):
-
+	img = pygame.image.load("char.png")
 	def __init__(self):
-		pass
+		self.img = pygame.image.load("char.png")
 		
 	height = 100
 	width = 90
@@ -35,9 +35,9 @@ class player(entity):
 			self.up += self.accel
 			
 		if self.left == True:
-			self.side += -self.accel*1.4
+			self.side += -self.accel*1.6
 		if self.right == True:
-			self.side += self.accel*1.4
+			self.side += self.accel*1.6
 			
 		if self.y > self.window and self.up > 0:
 			self.up = 0
@@ -80,7 +80,9 @@ class player(entity):
 			if self.on:
 				pygame.draw.rect(window,HSVtoRGB(self.color),(self.x-self.width/2-scroll, self.y-self.height/2, self.width, self.height))
 			else:
-				pygame.draw.rect(window,(0,0,0),(self.x-self.width/2-scroll, self.y-self.height/2, self.width, self.height))
+				window.blit(self.img, (self.x-self.width/2-scroll, self.y-self.height/2, self.width, self.height))
+				
+				#pygame.draw.rect(window,(0,0,0),(self.x-self.width/2-scroll, self.y-self.height/2, self.width, self.height))
 		else:
 			if self.on:
 				pygame.draw.polygon(window,HSVtoRGB(self.color),[(self.x-scroll,0),(self.x+self.width/(1+math.sqrt(abs(self.y))/10)-scroll,self.height),(self.x-scroll,self.height/2),(self.x-self.width/(1+math.sqrt(abs(self.y))/10)-scroll,self.height)])
